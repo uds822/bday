@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love! ✨💖</title>
+    <meta name="description" content="A magical, romantic birthday wish celebration with interactive cakes, fireworks, flowers, and music.">
+    
+    <!-- Theme & Icons -->
+    <meta name="theme-color" content="#120320">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Starfield Animation Backdrop -->
+    <div class="stars-bg"></div>
+
+    <!-- Canvas Layers for Fireworks, Petals, and Crackers -->
+    <canvas id="petalsCanvas" class="canvas-layer"></canvas>
+    <canvas id="fireworksCanvas" class="canvas-layer"></canvas>
+
+    <!-- Floating Interactive Balloons Container -->
+    <div id="floatingBalloonsContainer" class="floating-balloons-container"></div>
+
+    <!-- ===================================================
+         CURTAIN / SURPRISE ENTRANCE SCREEN
+         =================================================== -->
+    <div id="entranceScreen" class="entrance-screen">
+        <div id="giftBoxWrapper" class="gift-box-wrapper" title="Tap to open your surprise!">
+            <div class="gift-pulse-glow"></div>
+            <div class="gift-lid"></div>
+            <div class="gift-bow">🎀</div>
+            <div class="gift-box">
+                <div class="gift-ribbon-vertical"></div>
+                <div class="gift-ribbon-horizontal"></div>
+            </div>
+        </div>
+
+        <h1 class="entrance-title">A Special Surprise For You...</h1>
+        <p class="entrance-subtitle">Close your eyes, make a little wish, and tap below ✨</p>
+        
+        <button id="openGiftBtn" class="tap-prompt-btn">
+            <span>Open Birthday Surprise</span>
+            <span>🎁</span>
+        </button>
+    </div>
+
+    <!-- ===================================================
+         MAIN INTERACTIVE EXPERIENCE
+         =================================================== -->
+    <div class="main-wrapper">
+
+        <!-- Top Navigation Bar -->
+        <nav class="top-nav">
+            <div class="nav-brand">
+                <span>🎂</span>
+                <span>Happy Birthday</span>
+            </div>
+
+            <div class="nav-actions">
+                <button id="navMusicBtn" class="icon-btn" title="Toggle Music">🎵</button>
+                <button id="navShareBtn" class="share-nav-btn">
+                    <span>🔗 Share Link</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <span class="sparkle-crown">👑 ✨</span>
+            <h1 class="bday-title">Happy Birthday, <br><span class="recipient-name">My Princess</span>!</h1>
+            <p class="bday-subtitle">To the most enchanting soul in my entire universe 💖</p>
+        </header>
+
+        <!-- 3D Interactive Birthday Cake Stage -->
+        <section class="cake-stage">
+            <div class="wish-prompt-tag">✨ Tap the candles to make a wish & blow them out! ✨</div>
+
+            <div id="cakeContainer" class="cake-container" title="Click to blow out candles!">
+                <!-- Candles -->
+                <div class="candles-wrap">
+                    <div class="candle">
+                        <div class="candle-wick"></div>
+                        <div class="flame"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="candle-wick"></div>
+                        <div class="flame"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="candle-wick"></div>
+                        <div class="flame"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                </div>
+
+                <!-- Strawberries on top tier -->
+                <div class="strawberries">
+                    <span class="strawberry">🍓</span>
+                    <span class="strawberry">🍓</span>
+                    <span class="strawberry">🍓</span>
+                    <span class="strawberry">🍓</span>
+                </div>
+
+                <!-- Tier 1 (Top) -->
+                <div class="cake-tier tier-top">
+                    <div class="frosting-drip"></div>
+                </div>
+
+                <!-- Tier 2 (Middle) -->
+                <div class="cake-tier tier-middle">
+                    <div class="frosting-drip"></div>
+                </div>
+
+                <!-- Tier 3 (Bottom) -->
+                <div class="cake-tier tier-bottom">
+                    <div class="frosting-drip"></div>
+                </div>
+
+                <!-- Cake Plate -->
+                <div class="cake-plate"></div>
+            </div>
+
+            <!-- Wish Granted Message Banner -->
+            <div id="wishBanner" class="wish-banner">
+                <h2 class="wish-heading">🎉 Your Wish Has Been Released! 🌟</h2>
+                <p class="wish-desc">May every single dream of yours turn into reality this year. You deserve all the laughter, happiness, and stars in the night sky! ❤️</p>
+            </div>
+        </section>
+
+        <!-- Floating Action Controls (Toolbar) -->
+        <section class="action-toolbar">
+            <button id="crackersBtn" class="action-btn btn-crackers">
+                <span>🎆</span>
+                <span>Launch Firecrackers</span>
+            </button>
+            <button id="bouquetBtn" class="action-btn btn-bouquet">
+                <span>💐</span>
+                <span>Bloom Flower Bouquet</span>
+            </button>
+            <button id="musicToggleBtn" class="action-btn btn-music">
+                <span>🎵</span>
+                <span>Music: On</span>
+            </button>
+            <button id="toolbarShareBtn" class="action-btn">
+                <span>✍️</span>
+                <span>Personalize & Share</span>
+            </button>
+        </section>
+
+        <!-- Interactive Blooming Bouquet Container -->
+        <section id="bouquet-container"></section>
+
+        <!-- Romantic Love Letter Section -->
+        <article class="letter-section">
+            <div class="letter-wax-seal">💌</div>
+            <div class="letter-header">
+                <span class="letter-tag">A Heartfelt Note For You</span>
+                <h2 class="letter-title">My Dearest <span class="recipient-name">Princess</span>,</h2>
+            </div>
+
+            <div class="letter-body">
+                <p class="letter-custom-msg">
+                    From the moment you came into my life, everything turned brighter, warmer, and endlessly more beautiful. Your smile is my daily dose of sunshine, and your laughter is the sweetest melody I've ever known.
+                </p>
+                <p>
+                    On this special day, I want you to know how deeply you are cherished and admired. You bring pure magic into the world just by being yourself. I promise to stand by your side, celebrate every victory, and cherish every single heartbeat we share.
+                </p>
+                <p>
+                    Happy Birthday, my angel. May this year bloom with boundless joy, peace, and unforgettable moments! 🌹✨
+                </p>
+            </div>
+
+            <div class="letter-sign">
+                Forever & Always,
+                <span class="sender-name">Your Rajan</span>
+            </div>
+        </article>
+
+        <!-- Sweet Reasons Why I Adore You (Cards Grid) -->
+        <section class="reasons-section">
+            <h2 class="section-title">A Few Reasons Why You're My World</h2>
+            <p class="section-subtitle">Tap each card to feel the love 💕</p>
+
+            <div class="cards-grid">
+                <div class="reason-card" onclick="showToast('Your smile brightens even my darkest days! ✨')">
+                    <div class="card-icon">💫</div>
+                    <h3 class="card-title">Your Radiant Smile</h3>
+                    <p class="card-text">One glimpse of your smile instantly turns any ordinary day into pure joy and sunshine.</p>
+                </div>
+
+                <div class="reason-card" onclick="showToast('Your kindness is your true superpower! 💖')">
+                    <div class="card-icon">🌸</div>
+                    <h3 class="card-title">Your Pure Heart</h3>
+                    <p class="card-text">The warmth, kindness, and compassion you give to everyone around you is truly rare and precious.</p>
+                </div>
+
+                <div class="reason-card" onclick="showToast('Every second with you is a cherished memory! ⏳')">
+                    <div class="card-icon">🕊️</div>
+                    <h3 class="card-title">My Safe Haven</h3>
+                    <p class="card-text">With you, I can be completely myself. In your arms, I have found my true home.</p>
+                </div>
+
+                <div class="reason-card" onclick="showToast('You are the prettiest girl in the entire universe! 👑')">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Your Gentle Magic</h3>
+                    <p class="card-text">You turn the smallest moments into sweet adventures and lifelong memories.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with all my heart for <span class="recipient-name">You</span> 💖</p>
+        </footer>
+
+    </div>
+
+    <!-- Compliment Toast Pop-up -->
+    <div id="complimentToast" class="compliment-toast">
+        <span>💖</span>
+        <span class="toast-text">Happy Birthday, my love!</span>
+    </div>
+
+    <!-- Personalize & Share Modal -->
+    <div id="shareModal" class="modal-overlay">
+        <div class="modal-card">
+            <button id="closeShareBtn" class="modal-close-btn">&times;</button>
+            <h3 class="modal-title">Personalize & Share Link 💌</h3>
+            <p class="modal-subtitle">Customize her name and message, then generate a shareable link!</p>
+
+            <div class="form-group">
+                <label for="inputHerName">Her Name / Nickname</label>
+                <input type="text" id="inputHerName" class="form-input" placeholder="e.g. Aanya, Princess, My Love">
+            </div>
+
+            <div class="form-group">
+                <label for="inputYourName">Your Name</label>
+                <input type="text" id="inputYourName" class="form-input" placeholder="e.g. Rajan">
+            </div>
+
+            <div class="form-group">
+                <label for="inputCustomMsg">Special Love Message (Optional)</label>
+                <textarea id="inputCustomMsg" class="form-input" placeholder="Write something sweet from your heart..."></textarea>
+            </div>
+
+            <button id="copyLinkBtn" class="copy-link-btn">
+                <span>📋</span>
+                <span>Copy Personalized Link</span>
+            </button>
+            <div id="copyStatusMsg" class="copy-status-msg"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript Engines -->
+    <script src="audio.js"></script>
+    <script src="petals.js"></script>
+    <script src="fireworks.js"></script>
+    <script src="flowers.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
